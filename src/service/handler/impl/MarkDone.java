@@ -1,5 +1,6 @@
 package service.handler.impl;
 
+import enums.TaskStatus;
 import enums.TaskType;
 import model.Task;
 import model.TaskRequest;
@@ -8,22 +9,21 @@ import service.handler.BaseHandler;
 import java.time.OffsetDateTime;
 import java.util.List;
 
-public class UpdateTask extends BaseHandler {
+public class MarkDone extends BaseHandler {
 
     @Override
     public boolean handle(TaskType taskType) {
-        return taskType.equals(TaskType.UPDATE);
+        return taskType.equals(TaskType.MARK_DONE);
     }
 
     @Override
     public TaskRequest resolve(String[] args) {
 
-        validateArgsLength(args, 3);
+        validateArgsLength(args, 2);
 
         TaskRequest taskRequest = new TaskRequest();
 
         taskRequest.setId(Integer.parseInt(args[1]));
-        taskRequest.setDescription(args[2]);
 
         return taskRequest;
     }
@@ -36,7 +36,7 @@ public class UpdateTask extends BaseHandler {
                 .filter(task -> task.getId() == taskRequest.getId())
                 .findFirst()
                 .ifPresentOrElse(task -> {
-                    task.setDescription(taskRequest.getDescription());
+                    task.setStatus(TaskStatus.DONE.getValue());
                     task.setUpdatedAt(OffsetDateTime.now());
                 }, () -> {
                     System.out.println("No task id " + taskRequest.getId());

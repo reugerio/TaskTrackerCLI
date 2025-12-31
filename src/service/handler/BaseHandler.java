@@ -16,6 +16,12 @@ public abstract class BaseHandler implements TaskHandler {
 
     private static final Path JSON_FILE_PATH = Path.of("src/tasks.json");
 
+    protected void validateArgsLength(String[] args, int expectedLength) {
+        if (args.length != expectedLength) {
+            throw new IllegalArgumentException("Expected " + expectedLength + " arguments, but got " + args.length);
+        }
+    }
+
     protected List<Task> getTasks() throws IOException {
 
         List<Task> tasks = new ArrayList<>();
@@ -177,8 +183,6 @@ public abstract class BaseHandler implements TaskHandler {
         }
 
         dateTimeStr = dateTimeStr.replaceAll("\\s+", "");
-
-        System.out.println(dateTimeStr);
 
         return OffsetDateTime.parse(dateTimeStr);
     }

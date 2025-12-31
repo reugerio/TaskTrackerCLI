@@ -1,7 +1,6 @@
 import enums.TaskType;
 import service.TaskHandler;
-import service.handler.impl.AddTask;
-import service.handler.impl.UpdateTask;
+import service.handler.impl.*;
 
 
 void main(String[] args) {
@@ -10,10 +9,18 @@ void main(String[] args) {
 
     AddTask addTask = new AddTask();
     UpdateTask updateTask = new UpdateTask();
+    DeleteTask deleteTask = new DeleteTask();
+    MarkInProgress markInProgress = new MarkInProgress();
+    MarkDone markDone = new MarkDone();
+    ViewTask viewTask = new ViewTask();
 
     List<TaskHandler> taskHandlers = new ArrayList<>();
     taskHandlers.add(addTask);
     taskHandlers.add(updateTask);
+    taskHandlers.add(deleteTask);
+    taskHandlers.add(markInProgress);
+    taskHandlers.add(markDone);
+    taskHandlers.add(viewTask);
 
     taskHandlers.stream()
             .filter(handler -> handler.handle(taskType))
