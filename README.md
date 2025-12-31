@@ -21,7 +21,7 @@ Run the following command to run the application:
 ### Update a task
 ##### java src/Main.java update `id` `description`
 ###### Example: 
-- java src/Main.java update 1 "Buy a banana"
+- java src/Main.java update 1 "Buy a Banana"
 
 ### Delete a task
 ##### java src/Main.java delete `id`
