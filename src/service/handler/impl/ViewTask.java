@@ -34,12 +34,31 @@ public class ViewTask extends BaseHandler {
         List<Task> tasks = getTasks();
 
         if (taskRequest.getStatus() == null) {
-            tasks.forEach(x -> System.out.println(x.toString()));
+            printTasks(tasks);
             return;
         }
 
-        tasks.stream()
+        tasks = tasks.stream()
                 .filter(x -> x.getStatus().equals(taskRequest.getStatus()))
-                .forEach(System.out::println);
+                .toList();
+
+        printTasks(tasks);
+    }
+
+    private void printTasks(List<Task> tasks) {
+        System.out.println("+----+--------------+--------+---------------------------------+-----------------------------------+");
+        System.out.println("| ID | Description  | Status | Created At                      | Updated At                        |");
+        System.out.println("+----+--------------+--------+---------------------------------+-----------------------------------+");
+
+        tasks.forEach(x -> System.out.printf("| %-2s | %-12s | %-6s | %-29s | %-29s |%n"
+                .formatted(
+                        x.getId(),
+                        x.getDescription(),
+                        x.getStatus(),
+                        x.getCreatedAt().toString(),
+                        x.getUpdatedAt().toString()
+                )));
+
+        System.out.println("+----+--------------+--------+---------------------------------+-----------------------------------+");
     }
 }
