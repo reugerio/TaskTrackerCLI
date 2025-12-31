@@ -18,6 +18,9 @@ public class AddTask extends BaseHandler {
 
     @Override
     public TaskRequest resolve(String args[]) {
+
+        validateArgsLength(args, 2);
+
         TaskRequest taskRequest = new TaskRequest();
 
         taskRequest.setDescription(args[1]);
