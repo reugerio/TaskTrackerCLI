@@ -3,12 +3,12 @@ package service.handler.impl;
 import enums.TaskType;
 import model.Task;
 import model.TaskRequest;
-import service.handler.BaseManager;
+import service.handler.BaseTask;
 
 import java.time.OffsetDateTime;
 import java.util.List;
 
-public class UpdateTask extends BaseManager {
+public class UpdateTask extends BaseTask {
 
     @Override
     public boolean handle(TaskType taskType) {
