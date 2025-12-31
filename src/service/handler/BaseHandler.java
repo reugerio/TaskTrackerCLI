@@ -8,12 +8,9 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
-import static util.JsonHelper.appendJsonString;
-import static util.JsonHelper.buildJsonString;
+import static util.JsonHelper.*;
 
 public abstract class BaseHandler implements TaskHandler {
 
@@ -41,14 +38,13 @@ public abstract class BaseHandler implements TaskHandler {
                 .split("},");
 
         Arrays.stream(jsonTasks).forEach(jsonTask -> {
-            jsonTask = jsonTask.replace("\"", "");
-            String[] taskProperties = jsonTask.replace("{", "").replace("}", "").split(",");
+            Map<String, String> taskMap = parseJsonObject(jsonTask);
 
-            String id = getStringValue(taskProperties, 0);
-            String description = getStringValue(taskProperties, 1);
-            String status = getStringValue(taskProperties, 2);
-            OffsetDateTime createdDateTime = convertToDateTime(getDateValue(taskProperties, 3));
-            OffsetDateTime updatedDateTime = convertToDateTime(getDateValue(taskProperties, 4));
+            String id = taskMap.get("id");
+            String description = taskMap.get("description");
+            String status = taskMap.get("status");
+            OffsetDateTime createdDateTime = convertToDateTime(taskMap.get("createdAt"));
+            OffsetDateTime updatedDateTime = convertToDateTime(taskMap.get("updatedAt"));
 
             Task task = new Task();
             task.setId(Integer.parseInt(id));
@@ -72,24 +68,6 @@ public abstract class BaseHandler implements TaskHandler {
         } catch (IOException e) {
             throw new RuntimeException("Failed to save tasks to " + JSON_FILE_PATH, e);
         }
-    }
-
-    private String getStringValue(String[] keyValue, int index) {
-
-        if (index >= keyValue.length) {
-            return null;
-        }
-
-        return keyValue[index].split(":")[1].strip();
-    }
-
-    private String getDateValue(String[] keyValue, int index) {
-
-        if (index >= keyValue.length) {
-            return null;
-        }
-
-        return keyValue[index].split("[a-z]:")[1];
     }
 
     private OffsetDateTime convertToDateTime(String dateTimeStr) {
