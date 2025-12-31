@@ -3,7 +3,7 @@ package service;
 import enums.TaskType;
 import model.TaskRequest;
 
-public interface TaskHandler {
+public interface TaskManager {
 
     boolean handle(TaskType taskType);
 

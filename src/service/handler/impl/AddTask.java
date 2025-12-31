@@ -4,12 +4,12 @@ import enums.TaskStatus;
 import enums.TaskType;
 import model.Task;
 import model.TaskRequest;
-import service.handler.BaseHandler;
+import service.handler.BaseManager;
 
 import java.time.OffsetDateTime;
 import java.util.List;
 
-public class AddTask extends BaseHandler {
+public class AddTask extends BaseManager {
 
     @Override
     public boolean handle(TaskType taskType) {

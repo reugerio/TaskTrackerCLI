@@ -1,5 +1,5 @@
 import enums.TaskType;
-import service.TaskHandler;
+import service.TaskManager;
 import service.handler.impl.*;
 
 
@@ -14,15 +14,15 @@ void main(String[] args) {
     MarkDone markDone = new MarkDone();
     ViewTask viewTask = new ViewTask();
 
-    List<TaskHandler> taskHandlers = new ArrayList<>();
-    taskHandlers.add(addTask);
-    taskHandlers.add(updateTask);
-    taskHandlers.add(deleteTask);
-    taskHandlers.add(markInProgress);
-    taskHandlers.add(markDone);
-    taskHandlers.add(viewTask);
+    List<TaskManager> taskManager = new ArrayList<>();
+    taskManager.add(addTask);
+    taskManager.add(updateTask);
+    taskManager.add(deleteTask);
+    taskManager.add(markInProgress);
+    taskManager.add(markDone);
+    taskManager.add(viewTask);
 
-    taskHandlers.stream()
+    taskManager.stream()
             .filter(handler -> handler.handle(taskType))
             .findFirst()
             .ifPresentOrElse(handler -> {
