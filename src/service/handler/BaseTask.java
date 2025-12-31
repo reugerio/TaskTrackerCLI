@@ -12,7 +12,7 @@ import java.util.*;
 
 import static util.JsonHelper.*;
 
-public abstract class BaseManager implements TaskManager {
+public abstract class BaseTask implements TaskManager {
 
     private static final Path JSON_FILE_PATH = Path.of("src/tasks.json");
 

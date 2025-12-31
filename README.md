@@ -11,7 +11,8 @@ A simple java application to manage tasks from the command line. It allows users
 
 git clone https://github.com/reugerio/TaskTrackerCLI
 
-### Run the following command to run the application:
+###
+Run the following command to run the application:
 
 ### Add Task
 ##### java src/Main.java add `description`

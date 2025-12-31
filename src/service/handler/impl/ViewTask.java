@@ -3,11 +3,11 @@ package service.handler.impl;
 import enums.TaskType;
 import model.Task;
 import model.TaskRequest;
-import service.handler.BaseManager;
+import service.handler.BaseTask;
 
 import java.util.List;
 
-public class ViewTask extends BaseManager {
+public class ViewTask extends BaseTask {
 
     @Override
     public boolean handle(TaskType taskType) {
