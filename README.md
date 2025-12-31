@@ -2,16 +2,16 @@
 
 A simple java application to manage tasks from the command line. It allows users to add, update, delete, and mark tasks as done, in-progress, or todo.
 
-Prerequisites
+##### Prerequisites
 - Java 25 or higher
 
-How to run
+##### How to run
 
-Clone Repository
+###### Clone Repository
 
 git clone https://github.com/reugerio/TaskTrackerCLI
 
-Run the following command to run the application:
+### Run the following command to run the application:
 
 ### Add Task
 ##### java src/Main.java add `description`
