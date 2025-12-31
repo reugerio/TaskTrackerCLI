@@ -1,15 +1,13 @@
 package service.handler.impl;
 
-import enums.TaskStatus;
 import enums.TaskType;
 import model.Task;
 import model.TaskRequest;
-import service.handler.BaseHandler;
+import service.handler.BaseManager;
 
-import java.time.OffsetDateTime;
 import java.util.List;
 
-public class ViewTask extends BaseHandler {
+public class ViewTask extends BaseManager {
 
     @Override
     public boolean handle(TaskType taskType) {

@@ -1,7 +1,7 @@
 package service.handler;
 
 import model.Task;
-import service.TaskHandler;
+import service.TaskManager;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -12,7 +12,7 @@ import java.util.*;
 
 import static util.JsonHelper.*;
 
-public abstract class BaseHandler implements TaskHandler {
+public abstract class BaseManager implements TaskManager {
 
     private static final Path JSON_FILE_PATH = Path.of("src/tasks.json");
 
