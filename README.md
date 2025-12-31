@@ -9,7 +9,7 @@ How to run
 
 Clone Repository
 
-git clone https://github.com/reugerio/TaskTrackerCLI.git
+git clone https://github.com/reugerio/TaskTrackerCLI
 
 Run the following command to run the application:
 
